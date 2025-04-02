@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Quienes somos",
+    "content": "Quienes somos",
+    "id": "quienes-somos"
+  },
+  {
+    "title": "Servicios",
+    "content": "Servicios",
+    "id": "servicios"
+  },
+  {
+    "title": "Contacto",
+    "content": "Contacto",
+    "id": "contacto"
+  }
+]

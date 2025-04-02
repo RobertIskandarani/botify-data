@@ -1,6 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
+import Header from "../components/Header";
 import "../styles/global.css";
 
 const { title = "Botify Data" } = Astro.props;
@@ -20,7 +20,7 @@ const { title = "Botify Data" } = Astro.props;
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
-    <Header />
+    <Header client:visible />
     <slot />
     <Footer />
   </body>
@@ -30,6 +30,10 @@ const { title = "Botify Data" } = Astro.props;
   * {
     box-sizing: border-box;
     font-family: var(--font-primary);
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
