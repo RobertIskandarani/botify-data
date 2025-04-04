@@ -38,19 +38,24 @@ export default function Header() {
       </div>
       <div
         className={classNames(
-          "from-primary to-primary/40 border-white-50 absolute bottom-0 flex w-full flex-col gap-2 border-t bg-gradient-to-t px-6 py-4 backdrop-blur-sm transition-transform duration-[250ms] ease-in-out",
-          { "translate-y-0": isSelected, "translate-y-full": !isSelected },
+          "from-primary to-primary/40 border-white-50 absolute bottom-0 flex w-full justify-center border-t bg-gradient-to-t px-6 py-4 backdrop-blur-sm transition-all duration-[250ms] ease-in-out",
+          {
+            "translate-y-0 opacity-100": isSelected,
+            "translate-y-full opacity-0": !isSelected,
+          },
         )}
       >
-        {sections.map(({ title, content, id, filled }) => (
-          <Anchor
-            key={id}
-            title={title}
-            content={content}
-            href={`#${id}`}
-            filled={filled}
-          />
-        ))}
+        <span className="flex w-full max-w-xl flex-col gap-2">
+          {sections.map(({ title, content, id, filled }) => (
+            <Anchor
+              key={id}
+              title={title}
+              content={content}
+              href={`#${id}`}
+              filled={filled}
+            />
+          ))}
+        </span>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export default function Anchor({
 }: AnchorProps) {
   return (
     <a
-      className={classNames("w-full rounded-xl px-4 py-2", {
+      className={classNames("w-full rounded-xl px-4 py-4 text-2xl", {
         "bg-primary-light text-white": filled,
         "text-left": align === "left",
         "text-right": align === "right",
