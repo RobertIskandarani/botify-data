@@ -1,10 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HamburguerIcon from "./icons/hamburguer/HamburguerIcon";
 import Anchor from "./Anchor";
 import sections from "../data/Sections.json";
 import classNames from "classnames";
 export default function Header() {
   const [isSelected, setIsSelected] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setIsSelected(false);
+      }
+    };
+
+    // Set initial state on mount
+    if (window.innerWidth >= 1024) {
+      setIsSelected(false);
+    }
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerWidth]);
 
   const handleClick = () => {
     setIsSelected((prevStatus) => !prevStatus);
@@ -34,11 +55,13 @@ export default function Header() {
             width="auto"
           />
         </a>
-        <HamburguerIcon isSelected={isSelected} handleClick={handleClick} />
+        <span className="flex h-full items-center justify-center lg:hidden">
+          <HamburguerIcon isSelected={isSelected} handleClick={handleClick} />
+        </span>
       </div>
       <div
         className={classNames(
-          "from-primary to-primary/40 border-white-50 absolute bottom-0 flex w-full justify-center border-t bg-gradient-to-t px-6 py-4 backdrop-blur-sm transition-all duration-[250ms] ease-in-out",
+          "from-primary to-primary/40 border-white-50 absolute bottom-0 flex w-full justify-center border-t bg-gradient-to-t px-6 py-4 backdrop-blur-sm transition-all duration-[250ms] ease-in-out lg:hidden",
           {
             "translate-y-0 opacity-100": isSelected,
             "translate-y-full opacity-0": !isSelected,
