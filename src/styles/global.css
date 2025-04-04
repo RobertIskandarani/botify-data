@@ -6,6 +6,8 @@
   --color-primary: #151d49;
   --color-primary-light: #395191;
 
+  --color-white-50: rgba(255, 255, 255, 0.5);
+
   --font-primary: "Inter", "sans-serif";
 }
 

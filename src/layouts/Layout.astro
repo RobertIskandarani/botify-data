@@ -20,7 +20,7 @@ const { title = "Botify Data" } = Astro.props;
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
-    <Header client:visible />
+    <Header client:only />
     <slot />
     <Footer />
   </body>

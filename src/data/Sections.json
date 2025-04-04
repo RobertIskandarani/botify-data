@@ -12,6 +12,7 @@
   {
     "title": "Contacto",
     "content": "Contacto",
-    "id": "contacto"
+    "id": "contacto",
+    "filled": true
   }
 ]

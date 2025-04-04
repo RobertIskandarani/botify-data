@@ -11,10 +11,15 @@ export default function Header() {
   };
 
   return (
-    <div className="fixed inset-0 h-dvh overflow-hidden">
+    <div
+      className={classNames("fixed inset-0 overflow-hidden", {
+        "h-dvh transition-none": isSelected,
+        "h-0 transition-[height] delay-250": !isSelected,
+      })}
+    >
       <div
         className={classNames(
-          "from-primary to-primary/20 fixed top-0 flex h-24 w-full flex-row justify-between bg-gradient-to-b px-2 py-4 backdrop-blur-sm before:absolute before:inset-0 before:h-full before:w-full before:border-b before:border-white before:transition-transform before:duration-[250ms] before:ease-in-out before:content-['']",
+          "from-primary to-primary/20 before:border-white-50 fixed top-0 flex h-24 w-full flex-row justify-between bg-gradient-to-b px-2 py-4 backdrop-blur-sm before:absolute before:inset-0 before:h-full before:w-full before:border-b before:transition-transform before:duration-[250ms] before:ease-in-out before:content-['']",
           {
             "before:translate-x-0": isSelected,
             "before:-translate-x-full": !isSelected,
@@ -33,12 +38,18 @@ export default function Header() {
       </div>
       <div
         className={classNames(
-          "bg-primary-light absolute bottom-0 flex w-full flex-col gap-2 px-6 py-4 transition-transform duration-[250ms] ease-in-out",
+          "from-primary to-primary/40 border-white-50 absolute bottom-0 flex w-full flex-col gap-2 border-t bg-gradient-to-t px-6 py-4 backdrop-blur-sm transition-transform duration-[250ms] ease-in-out",
           { "translate-y-0": isSelected, "translate-y-full": !isSelected },
         )}
       >
-        {sections.map(({ title, content, id }) => (
-          <Anchor key={id} title={title} content={content} href={`#${id}`} />
+        {sections.map(({ title, content, id, filled }) => (
+          <Anchor
+            key={id}
+            title={title}
+            content={content}
+            href={`#${id}`}
+            filled={filled}
+          />
         ))}
       </div>
     </div>
